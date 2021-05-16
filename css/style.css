@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+  }
+  h1 {
+    text-align: center;
+  }
+  img {
+    display: block;
+    width: 150px;
+    float: left;
+    height: 150px;
+    border: 2px solid lightblue;
+  }
+  #image-container {
+    padding-left: 200px;
+    border: 2px solid black;
+    width: 1000px;
+    margin: 0 auto;
+    height: 175px;
+  }
+
+  #leftImg,
+  #middleImg,
+  #rightImg {
+    width: 200px;
+    margin: 10px;
+    border-radius: 10px;
+  }
+
+  span {
+    margin-left: 50px;
+  }
+
+  #Rounds {
+    margin-left: 20px;
+    font-size: 30px;
+  }
+  
+  button{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 55px;
+  }
+  ul{
+      margin:50px 500px;
+      
+  }
+  body{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
