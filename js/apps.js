@@ -79,8 +79,6 @@ function renderImg() {
 
 
 
-
-
 }
 renderImg();
 
@@ -106,6 +104,8 @@ function handelClicks(event) {
         leftImgEl.removeEventListener('click', handelClicks);
         middleImgEl.removeEventListener('click', handelClicks);
         rightImgEl.removeEventListener('click', handelClicks);
+
+        settingItems();
 
         let viewEl = document.getElementById('viewResults');
         let buttonEl = document.createElement('button');
@@ -184,3 +184,23 @@ var myChart = new Chart(ctx, {
     }
 });
 }
+
+
+  //local storge
+    
+  function settingItems(){
+    let data = JSON.stringify(products);
+    console.log(data);
+    localStorage.setItem('products',data);
+
+    }
+
+    function gettingItems() {
+        let stringObj = localStorage.getItem('productsN ');
+        let normalObj = JSON.parse(stringObj);
+        if (normalObj !== null) {
+            products  = normalObj;
+        }
+    }
+    gettingItems();
+
