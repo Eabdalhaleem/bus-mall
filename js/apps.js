@@ -120,7 +120,7 @@ function handelClicks(event) {
             for (let i = 0; i < products.length; i++) {
                 liEl = document.createElement('li');
                 ulEl.appendChild(liEl);
-                liEl.textContent = `${products[i].productName} had ${products[i].click} votes, and was seen ${products[i].seen} times.`
+                liEl.textContent = `${products[i].productName} had ${products[i].click} votes, and was seen ${products[i].seen} times. `
                 productClick.push(products[i].click);
                 productSeen.push(products[i].seen);
                 
@@ -138,6 +138,12 @@ function handelClicks(event) {
 // create a chart on js
 function chartRender(){
 var ctx = document.getElementById('myChart').getContext('2d');
+
+Chart.defaults.font.size = 16;
+Chart.defaults.borderColor = 'white';
+Chart.defaults.backgroundColor = 'white';
+Chart.defaults.color = 'black';
+
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -146,11 +152,11 @@ var myChart = new Chart(ctx, {
             label: '# of click',
             data: productClick,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
+                'rgba(133, 228, 133, 0.801)',
                 
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
+                'rgba(133, 228, 133, 0.801)',
                
             ],
             borderWidth: 1,
@@ -160,11 +166,11 @@ var myChart = new Chart(ctx, {
             label: '# of seen',
             data: productSeen,
             backgroundColor: [
-                'rgba(0, 99, 132, 0.2)',
+                'rgba(109, 202, 209, 0.938)',
                 
             ],
             borderColor: [
-                'rgba(0, 99, 132, 1)',
+                'rgba(109, 202, 209, 0.938)',
                
             ],
             borderWidth: 1,
