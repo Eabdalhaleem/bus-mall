@@ -1,5 +1,5 @@
 'use strict';
-
+// global 
 let rounds = 0;
 let maxRounds = 25; //25 round
 let roundEl = document.getElementById('Rounds');
@@ -8,6 +8,7 @@ let productsImageNames = [];
 let productClick = [];
 let productSeen = [];
 
+// function constructor
 function ProductImage(productName) {
     this.productName = productName.split('.')[0];
     this.pathImages = 'img/' + productName,
@@ -16,12 +17,12 @@ function ProductImage(productName) {
         products.push(this);
     productsImageNames.push(this.productName);
 }
-
+// array for image
 let productsImage = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg',
     'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg',
     'shark.jpg', 'sweep.png', 'tauntaun.jpg', 'unicorn.jpg', 'water-can.jpg', 'wine-glass.jpg'];
 
-
+// create new opject
 for (let i = 0; i < productsImage.length; i++) {
     new ProductImage(productsImage[i]);
 }
@@ -33,7 +34,7 @@ function randomNumber() {
     return Math.floor(Math.random() * products.length);
 
 }
-
+//  get element from Html
 let leftImgEl = document.getElementById('leftImg');
 let middleImgEl = document.getElementById('middleImg');
 let rightImgEl = document.getElementById('rightImg');
@@ -44,12 +45,14 @@ let rightImgIndex;
 
 let finalImages =[];
 
+// render inside Html
 function renderImg() {
 
     leftImgIndex = randomNumber();
     middleImgIndex = randomNumber();
     rightImgIndex = randomNumber();
 
+// check if their any repeted images
     while (leftImgIndex === rightImgIndex || middleImgIndex === rightImgIndex || middleImgIndex === leftImgIndex ||
         finalImages.includes(leftImgIndex)|| finalImages.includes(rightImgIndex)|| finalImages.includes(middleImgIndex)) {
         leftImgIndex = randomNumber();
@@ -59,7 +62,7 @@ function renderImg() {
     }
 
 
-
+// show image in Html
     leftImgEl.setAttribute('src', products[leftImgIndex].pathImages);
     leftImgEl.setAttribute('title', products[leftImgIndex].pathImages);
     products[leftImgIndex].seen++;
@@ -81,7 +84,7 @@ function renderImg() {
 
 }
 renderImg();
-
+//click event by mouse 
 leftImgEl.addEventListener('click', handelClicks);
 middleImgEl.addEventListener('click', handelClicks);
 rightImgEl.addEventListener('click', handelClicks);
@@ -99,7 +102,8 @@ function handelClicks(event) {
             products[rightImgIndex].click++;
         }
         renderImg();
-    } else {
+    } else { 
+        // remove click event after reach max round 25 clicks
 
         leftImgEl.removeEventListener('click', handelClicks);
         middleImgEl.removeEventListener('click', handelClicks);
@@ -107,11 +111,15 @@ function handelClicks(event) {
 
         settingItems();
 
+        // create button in Html
+
         let viewEl = document.getElementById('viewResults');
         let buttonEl = document.createElement('button');
         viewEl.appendChild(buttonEl);
         buttonEl.textContent = 'View Results';
         buttonEl.addEventListener('click', viewR);
+
+        // to show and create unorder list
 
         function viewR() {
 
@@ -193,7 +201,8 @@ var myChart = new Chart(ctx, {
 
 
   //local storge
-    
+
+    // function to save data in local storge
   function settingItems(){
     let data = JSON.stringify(products);
     console.log(data);
@@ -201,8 +210,10 @@ var myChart = new Chart(ctx, {
 
     }
 
+    // get items from local storge
+
     function gettingItems() {
-        let stringObj = localStorage.getItem('productsN ');
+        let stringObj = localStorage.getItem('products');
         let normalObj = JSON.parse(stringObj);
         if (normalObj !== null) {
             products  = normalObj;
